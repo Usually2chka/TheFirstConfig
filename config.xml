@@ -1,0 +1,4 @@
+<config>
+    <computer_name>MyComputer</computer_name>
+    <vfs_path>/path/to/your/virtual/filesystem</vfs_path>
+</config>
