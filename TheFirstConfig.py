@@ -1,6 +1,11 @@
 import os
 import xml.etree.ElementTree as ET
 import datetime
+import unittest
+import os
+import tarfile
+import datetime
+
 
 class VirtualFileSystem:
     def __init__(self, vfs_path):
@@ -64,6 +69,23 @@ class ShellEmulator:
             else:
                 print("Unknown command")
 
-if __name__ == "__main__":
-    emulator = ShellEmulator('config.xml')
-    emulator.run()
+class TestEmulator(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Создание тестового tar-файла и конфигурации
+        cls.test_tar = 'test_fs.tar'
+        cls.test_dir = '/tmp/test_fs'
+        os.mkdir(cls.test_dir)
+        with open(os.path.join(cls.test_dir, 'file1.txt'), 'w') as f:
+            f.write('This is file 1.\n')
+        with open(os.path.join(cls.test_dir, 'file2.txt'), 'w') as f:
+            f.write('This is file 2.\n')
+        with tarfile.open(cls.test_tar, 'w') as tar:
+            tar.add(cls.test_dir, arcname=os.path.basename(cls.test_dir))
+
+        cls.emulator = Emulator('config.xml')
+        cls.emulator.fs_path = cls.test_tar
+        cls.emulator.load_virtual_fs()
+        cls.emulator.current_dir = cls.emulator.virtual_fs
+
+    
