@@ -120,3 +120,7 @@ class TestEmulator(unittest.TestCase):
         result = self.emulator.date()
         self.assertEqual(result, current_date)
 
+    def test_tail_valid(self):
+        result = self.emulator.tail('file1.txt', 1)
+        self.assertEqual(result.strip(), 'This is file 1.')
+
