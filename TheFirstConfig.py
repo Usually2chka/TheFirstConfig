@@ -98,5 +98,9 @@ class TestEmulator(unittest.TestCase):
         expected_files = ['file1.txt', 'file2.txt']
         result = self.emulator.ls()
         self.assertTrue(set(expected_files).issubset(set(result)))
+    
+    def test_cd_valid(self):
+        self.emulator.cd('test_fs')
+        self.assertEqual(self.emulator.current_dir, os.path.join(self.emulator.virtual_fs, 'test_fs'))
 
     
