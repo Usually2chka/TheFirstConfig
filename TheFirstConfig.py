@@ -124,3 +124,7 @@ class TestEmulator(unittest.TestCase):
         result = self.emulator.tail('file1.txt', 1)
         self.assertEqual(result.strip(), 'This is file 1.')
 
+    def test_tail_invalid(self):
+        result = self.emulator.tail('invalid_file.txt', 1)
+        self.assertEqual(result, "File not found.")
+
