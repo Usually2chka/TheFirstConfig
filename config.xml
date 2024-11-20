@@ -1,4 +1,4 @@
 <config>
-    <computer_name>MyComputer</computer_name>
-    <vfs_path>/path/to/your/virtual/filesystem</vfs_path>
+    <computer_name>TestComputer</computer_name>
+    <fs_path>test_fs.tar</fs_path>
 </config>
