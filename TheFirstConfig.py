@@ -111,3 +111,7 @@ class TestEmulator(unittest.TestCase):
         result = self.emulator.exit()
         self.assertFalse(result)
 
+    def test_chmod(self):
+        result = self.emulator.chmod('755', 'file1.txt')
+        self.assertEqual(result, "Changed mode of file1.txt to 755")
+
