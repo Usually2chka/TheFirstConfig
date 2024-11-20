@@ -32,38 +32,3 @@ class VirtualFileSystem:
         except FileNotFoundError:
             return "File not found"
 
-class ShellEmulator:
-    def __init__(self, config_file):
-        self.load_config(config_file)
-        self.vfs = VirtualFileSystem(self.vfs_path)
-
-    def load_config(self, config_file):
-        tree = ET.parse(config_file)
-        root = tree.getroot()
-        self.computer_name = root.find('computer_name').text
-        self.vfs_path = root.find('vfs_path').text
-
-    def run(self):
-        while True:
-            command = input(f"{self.computer_name}@shell:{self.vfs.current_dir} $ ")
-            if command.startswith("ls"):
-                print(self.vfs.ls())
-            elif command.startswith("cd"):
-                _, path = command.split(maxsplit=1)
-                print(self.vfs.cd(path))
-            elif command.startswith("chmod"):
-                _, mode, filename = command.split(maxsplit=2)
-                print(self.vfs.chmod(mode, filename))
-            elif command == "date":
-                print(self.vfs.date())
-            elif command.startswith("tail"):
-                _, filename = command.split(maxsplit=1)
-                print(self.vfs.tail(filename))
-            elif command == "exit":
-                break
-            else:
-                print("Unknown command")
-
-if __name__ == "__main__":
-    emulator = ShellEmulator('config.xml')
-    emulator.run()
