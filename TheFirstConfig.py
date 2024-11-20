@@ -128,3 +128,9 @@ class TestEmulator(unittest.TestCase):
         result = self.emulator.tail('invalid_file.txt', 1)
         self.assertEqual(result, "File not found.")
 
+    def test_tail_no_lines(self):
+        result = self.emulator.tail('file1.txt', 0)
+        self.assertEqual(result, '')
+
+if __name__ == '__main__':
+    unittest.main()
