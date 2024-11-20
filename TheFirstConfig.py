@@ -115,3 +115,8 @@ class TestEmulator(unittest.TestCase):
         result = self.emulator.chmod('755', 'file1.txt')
         self.assertEqual(result, "Changed mode of file1.txt to 755")
 
+    def test_date(self):
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        result = self.emulator.date()
+        self.assertEqual(result, current_date)
+
