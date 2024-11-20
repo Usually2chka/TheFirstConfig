@@ -88,4 +88,10 @@ class TestEmulator(unittest.TestCase):
         cls.emulator.load_virtual_fs()
         cls.emulator.current_dir = cls.emulator.virtual_fs
 
+    @classmethod
+    def tearDownClass(cls):
+        # Удаление тестовых данных
+        os.remove(cls.test_tar)
+        os.rmdir(cls.test_dir)
+
     
