@@ -93,5 +93,10 @@ class TestEmulator(unittest.TestCase):
         # Удаление тестовых данных
         os.remove(cls.test_tar)
         os.rmdir(cls.test_dir)
+        
+    def test_ls(self):
+        expected_files = ['file1.txt', 'file2.txt']
+        result = self.emulator.ls()
+        self.assertTrue(set(expected_files).issubset(set(result)))
 
     
