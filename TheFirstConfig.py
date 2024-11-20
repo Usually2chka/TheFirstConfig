@@ -103,4 +103,6 @@ class TestEmulator(unittest.TestCase):
         self.emulator.cd('test_fs')
         self.assertEqual(self.emulator.current_dir, os.path.join(self.emulator.virtual_fs, 'test_fs'))
 
-    
+    def test_cd_invalid(self):
+        result = self.emulator.cd('invalid_dir')
+        self.assertEqual(result, "Directory not found.")
