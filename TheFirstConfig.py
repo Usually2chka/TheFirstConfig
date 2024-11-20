@@ -106,3 +106,8 @@ class TestEmulator(unittest.TestCase):
     def test_cd_invalid(self):
         result = self.emulator.cd('invalid_dir')
         self.assertEqual(result, "Directory not found.")
+    
+    def test_exit(self):
+        result = self.emulator.exit()
+        self.assertFalse(result)
+
