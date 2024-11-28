@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<config>
-    <hostname>emulator-pc</hostname>
-    <fs_path>virtual_fs.tar</fs_path>
-</config>
